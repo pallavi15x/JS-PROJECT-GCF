@@ -1,0 +1,1788 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Campus Management System Portal</title>
+    <link rel="stylesheet" href="style1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="login-container" class="login-wrapper">
+      <div class="login-box">
+        <h2><i class="fa-solid fa-graduation-cap"></i> SmartCampus Login</h2>
+        <p>Sign in with your official university credentials</p>
+        <form id="login-form">
+          <div class="input-group">
+            <label for="email">College Email ID</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="student@university.edu"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+          <button type="submit" class="btn-primary">Sign In</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="main-portal" class="portal-container hidden">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h3><i class="fa-solid fa-university"></i> LAKSHYA 2047</h3>
+        </div>
+        <nav class="sidebar-menu">
+          <a href="#" class="nav-link active" data-target="dashboard"
+            ><i class="fa-solid fa-gauge"></i> Dashboard</a
+          >
+          <a href="#" class="nav-link" data-target="announcements"
+            ><i class="fa-solid fa-tower-broadcast"></i> Announcements</a
+          >
+          <a href="#" class="nav-link" data-target="attendance"
+            ><i class="fa-solid fa-calendar-check"></i> Attendance</a
+          >
+          <a href="#" class="nav-link" data-target="timetable"
+            ><i class="fa-solid fa-clock"></i> Timetable</a
+          >
+          <a href="#" class="nav-link" data-target="assignments"
+            ><i class="fa-solid fa-file-arrow-up"></i> Assignments</a
+          >
+          <a href="#" class="nav-link" data-target="notices"
+            ><i class="fa-solid fa-bullhorn"></i> Notice Board</a
+          >
+          <a href="#" class="nav-link" data-target="departments"
+            ><i class="fa-solid fa-building-user"></i> Departments</a
+          >
+          <a href="#" class="nav-link" data-target="campus-map"
+            ><i class="fa-solid fa-map-location-dot"></i> Campus Map</a
+          >
+          <a href="#" class="nav-link" data-target="doubts"
+            ><i class="fa-solid fa-circle-question"></i> Doubt Forum</a
+          >
+          <a href="#" class="nav-link" data-target="grievance"
+            ><i class="fa-solid fa-triangle-exclamation"></i> Grievances</a
+          >
+        </nav>
+        <div class="sidebar-footer">
+          <button id="logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </button>
+        </div>
+      </aside>
+
+      <main class="content-area">
+        <header class="top-bar">
+          <div class="page-title" style="display: flex; align-items: center">
+            <button
+              id="sidebar-toggle"
+              class="sidebar-toggle-btn"
+              title="Open Menu"
+            >
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <h2 id="current-view-title">Student Dashboard</h2>
+          </div>
+
+          <div class="top-bar-actions">
+            <button
+              id="theme-toggle"
+              class="theme-btn"
+              title="Toggle Dark/Light Mode"
+            >
+              <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <div class="notification-wrapper">
+              <button
+                id="notification-btn"
+                class="theme-btn"
+                title="Recent Notices & Announcements"
+              >
+                <i class="fa-solid fa-bell"></i>
+                <span class="notification-badge">4</span>
+              </button>
+              <div
+                id="notification-dropdown"
+                class="notification-dropdown hidden"
+              >
+                <div class="dropdown-header">
+                  <h3><i class="fa-solid fa-bullhorn"></i> Recent Notices</h3>
+                </div>
+                <ul class="dropdown-list-items">
+                  <li>
+                    <span class="notif-time">Today, 9:10 AM</span>
+                    <p>
+                      <strong>CS-102:</strong> Tomorrow's lecture shifted to
+                      Room 305 by Dr. R. Sharma.
+                    </p>
+                  </li>
+                  <li>
+                    <span class="notif-time">Today, 8:00 AM</span>
+                    <p>
+                      <strong>MA-102:</strong> Surprise Quiz scheduled for this
+                      coming Friday.
+                    </p>
+                  </li>
+                  <li>
+                    <span class="notif-time">Yesterday, 5:45 PM</span>
+                    <p>
+                      <strong>CSE Dept:</strong> Signed lab attendance sheets
+                      due by Monday 10 AM.
+                    </p>
+                  </li>
+                  <li>
+                    <span class="notif-time">June 25, 2026</span>
+                    <p>
+                      <strong>Exam Cell:</strong> Mid Semester Exams are
+                      confirmed to start from 15 July 2026.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="profile-dropdown-wrapper">
+      <div class="user-profile-brief">
+        <span id="user-display-name">Alex Mercer</span>
+        <i class="fa-solid fa-circle-user profile-icon"></i>
+      </div>
+      <div class="profile-hover-menu">
+        <button class="menu-item-btn" id="open-profile-info-btn">
+          <i class="fa-solid fa-id-card"></i> Profile Information
+        </button>
+        <button class="menu-item-btn" id="open-exam-details-btn">
+          <i class="fa-solid fa-file-invoice"></i> Examination Details
+        </button>
+      </div>
+    </div>
+        </header>
+        <!--shivam works starts -->
+        <div class="sections-wrapper">
+          <section id="dashboard" class="portal-section active-section">
+            <div class="welcome-banner">
+              <h1>Welcome Back, <span class="student-name">Student</span>!</h1>
+              <p>
+                Here is a quick glance at your academic standing for this
+                semester.
+              </p>
+            </div>
+
+            <!-- Attendance -->
+            <div class="info-grid">
+              <div
+                class="info-card"
+                id="attendance-card"
+                style="cursor: pointer"
+              >
+                <h2>Attendance Overview
+                </h2>
+
+                <div class="progress-circle">
+                  <span>84.5%</span>
+                </div>
+
+                <p>Current Semester Attendance</p>
+              </div>
+
+              <!-- Notices -->
+              <div class="info-card" id="notices-card" style="cursor: pointer">
+                <h2><i class="fa-solid fa-bullhorn"></i> Latest Notices</h2>
+                <ul class="dashboard-list">
+                  <li>📢 Mid Semester Exam starts from <b>15 July 2026</b>.</li>
+                  <li>
+                    📚 Library will remain open till <b>10 PM</b> during exams.
+                  </li>
+                  <li>
+                    🎓 Scholarship Form submission last date:
+                    <b>30 June 2026</b>.
+                  </li>
+                </ul>
+              </div>
+              <!-- Assignments -->
+              <div
+                class="info-card"
+                id="assignments-card"
+                style="cursor: pointer"
+              >
+                <h2><i class="fa-solid fa-file-arrow-up"></i> Assignments</h2>
+                <ul class="dashboard-list">
+                  <li>💻 Data Structures Assignment - Due: <b>28 June</b></li>
+                  <li>📐 Mathematics Worksheet - Due: <b>30 June</b></li>
+                  <li>⚡ DBMS Mini Project - Due: <b>5 July</b></li>
+                </ul>
+              </div>
+
+              <!-- Upcoming Events -->
+              <div class="info-card">
+                <h2>
+                  <i class="fa-solid fa-calendar-days"></i> Upcoming Events
+                </h2>
+                <ul class="dashboard-list">
+                  <li>🎤 Tech Talk on AI - <b>29 June</b></li>
+                  <li>💡 Hackathon 2026 - <b>5 July</b></li>
+                  <li>🏏 Annual Sports Meet - <b>12 July</b></li>
+                </ul>
+              </div>
+            </div>
+            <div class="info-card carousel-section" style="margin-top: 2rem">
+              <h2>
+                <i class="fa-solid fa-images"></i> Campus Life & Recent
+                Highlights
+              </h2>
+              <p
+                class="section-subtitle"
+                style="
+                  color: var(--text-muted);
+                  margin-bottom: 1.5rem;
+                  font-size: 0.95rem;
+                "
+              >
+                Catch up on the latest events, festivals, high-profile visits,
+                and milestones at the campus.
+              </p>
+
+              <div class="carousel-container">
+                <div class="carousel-track-wrapper">
+                  <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide active">
+                      <div class="slide-image-container">
+                        <img
+                          src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80"
+                          alt="Dhoom Annual Cultural Festival"
+                          class="slide-img"
+                        />
+                        <div class="slide-badge">Cultural Fest</div>
+                      </div>
+                      <div class="slide-caption">
+                        <h3>Dhoom Annual Cultural Fest</h3>
+                        <p>
+                          A grand cultural extravaganza celebrating artistic
+                          diversity with electrifying EDM nights, celebrity
+                          spotlights, and dance-drama showcases bringing
+                          together thousands of students.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                      <div class="slide-image-container">
+                        <img
+                          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
+                          alt="Annual Convocation Ceremony"
+                          class="slide-img"
+                        />
+                        <div class="slide-badge">Academic Milestone</div>
+                      </div>
+                      <div class="slide-caption">
+                        <h3>7th Annual Convocation Ceremony</h3>
+                        <p>
+                          Celebrating the graduation of over 9,900 students. The
+                          ceremony was graced by honorary guests Boman Irani and
+                          Vaani Kapoor, inspiring our newest alumni pool.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                      <div class="slide-image-container">
+                        <img
+                          src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80"
+                          alt="Dignitary & Official Visits"
+                          class="slide-img"
+                        />
+                        <div class="slide-badge">Official Visit</div>
+                      </div>
+                      <div class="slide-caption">
+                        <h3>Viksit Bharat Yuva Samvad & Dignitary Visits</h3>
+                        <p>
+                          Fostering global policy and interaction, our campus
+                          recently hosted Honorable Governors and global
+                          dignitaries like the former Prime Minister of Malta,
+                          Dr. Joseph Muscat.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                      <div class="slide-image-container">
+                        <img
+                          src="https://images.unsplash.com/photo-1531058020387-3be344559be6?auto=format&fit=crop&w=800&q=80"
+                          alt="Award Functions and Felicitations"
+                          class="slide-img"
+                        />
+                        <div class="slide-badge">Achievements</div>
+                      </div>
+                      <div class="slide-caption">
+                        <h3>Student Felicitation & Award Ceremony</h3>
+                        <p>
+                          Cricket icon MS Dhoni visited the campus to personally
+                          felicitate outstanding students placed in top-tier
+                          organizations and present the President's Gold Medals
+                          for Startups.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                      <div class="slide-image-container">
+                        <img
+                          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+                          alt="Projections Technical Festival"
+                          class="slide-img"
+                        />
+                        <div class="slide-badge">Tech Fest</div>
+                      </div>
+                      <div class="slide-caption">
+                        <h3>Projections - Largest Technical Festival</h3>
+                        <p>
+                          A massive national innovation showcase featuring Smart
+                          India Hackathon models, advanced AI/Robotics
+                          exhibitions, and engineering design contests.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  class="carousel-btn prev-btn"
+                  id="carouselPrevBtn"
+                  aria-label="Previous Slide"
+                >
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button
+                  class="carousel-btn next-btn"
+                  id="carouselNextBtn"
+                  aria-label="Next Slide"
+                >
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <div class="carousel-indicators" id="carouselIndicators">
+                  <span class="dot active" data-slide="0"></span>
+                  <span class="dot" data-slide="1"></span>
+                  <span class="dot" data-slide="2"></span>
+                  <span class="dot" data-slide="3"></span>
+                  <span class="dot" data-slide="4"></span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!--shivam works done-->
+          <section id="announcements" class="portal-section">
+            <h2>Day-to-Day Announcements</h2>
+            <p>
+              Live classroom updates, faculty circulars, and department-level
+              notices — newest first.
+            </p>
+
+            <div class="dept-tabs">
+              <button
+                class="ann-filter-btn active"
+                onclick="filterAnnouncements('all', event)"
+              >
+                All
+              </button>
+              <button
+                class="ann-filter-btn"
+                onclick="filterAnnouncements('classroom', event)"
+              >
+                Classroom
+              </button>
+              <button
+                class="ann-filter-btn"
+                onclick="filterAnnouncements('department', event)"
+              >
+                Department
+              </button>
+              <button
+                class="ann-filter-btn"
+                onclick="filterAnnouncements('exam', event)"
+              >
+                Class Test
+              </button>
+            </div>
+
+            <div id="announcement-feed">
+              <div class="announcement-item classroom">
+                <span class="notice-date"
+                  ><i class="fa-solid fa-clock"></i> Today, 9:10 AM</span
+                >
+                <span class="ann-tag tag-classroom">Classroom</span>
+                <h4>CS-102: Tomorrow's lecture moved to Room 305</h4>
+                <p>
+                  Dr. R. Sharma has shifted the 10 AM Data Structures lecture to
+                  Room 305 due to a projector issue in the usual hall.
+                </p>
+                <p class="posted-by">Posted by: Dr. R. Sharma</p>
+              </div>
+              <div class="announcement-item exam">
+                <span class="notice-date"
+                  ><i class="fa-solid fa-clock"></i> Today, 8:00 AM</span
+                >
+                <span class="ann-tag tag-exam">Class Test</span>
+                <h4>MA-102 Surprise Quiz on Friday</h4>
+                <p>
+                  A short surprise quiz covering Multivariable Calculus
+                  Worksheets 1-3 will be held in the first 15 minutes of
+                  Friday's class.
+                </p>
+                <p class="posted-by">Posted by: Prof. Anita Desai</p>
+              </div>
+              <div class="announcement-item department">
+                <span class="notice-date"
+                  ><i class="fa-solid fa-clock"></i> Yesterday, 5:45 PM</span
+                >
+                <span class="ann-tag tag-department">Department</span>
+                <h4>CSE Department: Lab attendance sheets due by Monday</h4>
+                <p>
+                  All section coordinators must submit signed lab attendance
+                  sheets for May to the department office by Monday 10 AM.
+                </p>
+                <p class="posted-by">Posted by: CSE Department Office</p>
+              </div>
+              <div class="announcement-item classroom">
+                <span class="notice-date"
+                  ><i class="fa-solid fa-clock"></i> Yesterday, 2:30 PM</span
+                >
+                <span class="ann-tag tag-classroom">Classroom</span>
+                <h4>EC-104 Lab batch swap for next week</h4>
+                <p>
+                  Batch B and Batch C will swap lab slots next week only, so
+                  Batch B now reports at 2 PM and Batch C at 10 AM.
+                </p>
+                <p class="posted-by">Posted by: Dr. R. Sharma</p>
+              </div>
+            </div>
+          </section>
+          <section id="attendance" class="portal-section">
+            <!-- <h2>Semester Attendance Tracker</h2> -->
+
+            <div class="attendance-summary">
+              <div
+                class="progress-ring-card clickable-card"
+                onclick="toggleAttendanceDetails()"
+              >
+                <h3><b>Semester 3</b> Cumulative Attendance</h3>
+
+                <div class="percentage-display safe">84.5%</div>
+                <div class="attendance-line">
+                  <div class="attendance-fill" style="width: 84.5%"></div>
+                </div>
+
+                <p>Status: Safe (Above 75% Requirement)</p>
+                <br />
+                <p>Click to View Subject-wise Attendance</p>
+              </div>
+            </div>
+
+            <div id="attendance-details" class="attendance-details">
+              <table class="portal-table">
+                <thead>
+                  <tr>
+                    <th>Subject Code</th>
+                    <th>Subject Name</th>
+                    <th>Classes Attended</th>
+                    <th>Total Classes</th>
+                    <th>Attendance %</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>CS-102</td>
+                    <td>Data Structures & Algorithms</td>
+                    <td>36</td>
+                    <td>40</td>
+                    <td>90%</td>
+                    <td><span class="badge success">Excellent</span></td>
+                  </tr>
+
+                  <tr>
+                    <td>EC-104</td>
+                    <td>Basic Electronics & Circuits</td>
+                    <td>28</td>
+                    <td>38</td>
+                    <td>73.6%</td>
+                    <td><span class="badge danger">Low Attendance</span></td>
+                  </tr>
+
+                  <tr>
+                    <td>MA-102</td>
+                    <td>Multivariable Calculus</td>
+                    <td>32</td>
+                    <td>35</td>
+                    <td>91.4%</td>
+                    <td><span class="badge success">Excellent</span></td>
+                  </tr>
+
+                  <tr>
+                    <td>WD-101</td>
+                    <td>Web Development</td>
+                    <td>30</td>
+                    <td>34</td>
+                    <td>88.2%</td>
+                    <td><span class="badge success">Excellent</span></td>
+                  </tr>
+
+                  <tr>
+                    <td>OS-201</td>
+                    <td>Operating Systems</td>
+                    <td>27</td>
+                    <td>35</td>
+                    <td>77.1%</td>
+                    <td><span class="badge warning">Average</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="previous-semesters">
+              <h3>Previous Semester Attendance</h3>
+
+              <div class="semester-cards">
+                <!-- Semester 2 -->
+                <div class="semester-card" onclick="toggleSemester('sem2')">
+                  <h4>Semester II</h4>
+
+                  <div class="sem-percent">87.3%</div>
+
+                  <div class="attendance-line">
+                    <div
+                      class="attendance-fill safe"
+                      style="--progress: 87.3%; width: 0"
+                    ></div>
+                  </div>
+
+                  <p>Click to View Subject-wise Attendance</p>
+                </div>
+
+                <!-- Semester 1 -->
+                <div class="semester-card" onclick="toggleSemester('sem1')">
+                  <h4>Semester I</h4>
+
+                  <div class="sem-percent">82.8%</div>
+
+                  <div class="attendance-line">
+                    <div
+                      class="attendance-fill warning"
+                      style="--progress: 82.8%; width: 0"
+                    ></div>
+                  </div>
+
+                  <p>Click to View Subject-wise Attendance</p>
+                </div>
+              </div>
+
+              <!-- ================= Semester 2 Table ================= -->
+
+              <div id="sem2" class="attendance-details">
+                <table class="portal-table">
+                  <thead>
+                    <tr>
+                      <th>Subject</th>
+                      <th>Attended</th>
+                      <th>Total</th>
+                      <th>%</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>Programming in C</td>
+                      <td>33</td>
+                      <td>36</td>
+                      <td>91.6%</td>
+                      <td><span class="badge success">Excellent</span></td>
+                    </tr>
+
+                    <tr>
+                      <td>Mathematics-II</td>
+                      <td>29</td>
+                      <td>35</td>
+                      <td>82.8%</td>
+                      <td><span class="badge warning">Good</span></td>
+                    </tr>
+
+                    <tr>
+                      <td>Digital Electronics</td>
+                      <td>30</td>
+                      <td>35</td>
+                      <td>85.7%</td>
+                      <td><span class="badge success">Excellent</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- ================= Semester 1 Table ================= -->
+
+              <div id="sem1" class="attendance-details">
+                <table class="portal-table">
+                  <thead>
+                    <tr>
+                      <th>Subject</th>
+                      <th>Attended</th>
+                      <th>Total</th>
+                      <th>%</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>Mathematics-I</td>
+                      <td>31</td>
+                      <td>37</td>
+                      <td>83.7%</td>
+                      <td><span class="badge warning">Good</span></td>
+                    </tr>
+
+                    <tr>
+                      <td>Physics</td>
+                      <td>28</td>
+                      <td>34</td>
+                      <td>82.3%</td>
+                      <td><span class="badge warning">Good</span></td>
+                    </tr>
+
+                    <tr>
+                      <td>English</td>
+                      <td>35</td>
+                      <td>36</td>
+                      <td>97.2%</td>
+                      <td><span class="badge success">Excellent</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+          <section id="timetable" class="portal-section">
+            <h2>Weekly Class Schedule</h2>
+            <p>Classes: 09:30 AM - 04:20 PM | Saturdays Off</p>
+
+            <div class="table-responsive">
+              <table class="portal-table">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>09:30 - 10:20</td>
+                    <td>DSA</td>
+                    <td>Math</td>
+                    <td>OS</td>
+                    <td>Web</td>
+                    <td>DSA</td>
+                  </tr>
+                  <tr>
+                    <td>10:20 - 11:20</td>
+                    <td>OS</td>
+                    <td>DSA</td>
+                    <td>Web</td>
+                    <td>Math</td>
+                    <td>OS</td>
+                  </tr>
+                  <tr class="recess-row">
+                    <td colspan="6">
+                      11:20 AM - 12:20 PM | 1st Recess (1 Hour)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>12:20 - 01:20</td>
+                    <td>Math</td>
+                    <td>Web</td>
+                    <td>DSA</td>
+                    <td>OS</td>
+                    <td>Math</td>
+                  </tr>
+                  <tr>
+                    <td>01:20 - 02:10</td>
+                    <td>Web</td>
+                    <td>OS</td>
+                    <td>Math</td>
+                    <td>DSA</td>
+                    <td>Web</td>
+                  </tr>
+                  <tr class="recess-row">
+                    <td colspan="6">
+                      02:10 PM - 02:30 PM | 2nd Recess (20 Mins)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>02:30 - 03:20</td>
+                    <td>Lab</td>
+                    <td>Lab</td>
+                    <td>Lab</td>
+                    <td>Lab</td>
+                    <td>Tutorial</td>
+                  </tr>
+                  <tr>
+                    <td>03:20 - 04:20</td>
+                    <td>Lab</td>
+                    <td>Lab</td>
+                    <td>Lab</td>
+                    <td>Lab</td>
+                    <td>Tutorial</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="assignments" class="portal-section">
+            <div class="section-header-flex">
+              <h2>Course Assignments</h2>
+              <div class="assignment-tabs">
+                <button class="assign-tab-btn active" data-tab="pending">
+                  Pending
+                </button>
+                <button class="assign-tab-btn" data-tab="completed">
+                  Completed
+                </button>
+              </div>
+            </div>
+
+            <div class="assignment-list">
+              <div id="pending-assignments" class="assignment-view active-view">
+                <div class="assignment-card animate-entrance">
+                  <div class="assignment-meta">
+                    <span class="badge danger">Due in 2 Days</span>
+                    <h4>Data Structures: Implementation of Graphs</h4>
+                    <p>Subject: CS-102 | Professor: Dr. R. Sharma</p>
+                    <div class="prof-attachment">
+                      <p class="text-sm text-muted mb-2">
+                        <i class="fa-solid fa-folder-open"></i> Reference
+                        Material:
+                      </p>
+                      <a href="#" class="attachment-link file-link"
+                        ><i class="fa-solid fa-file-pdf"></i>
+                        Graph_Traversal_Guidelines.pdf</a
+                      >
+                    </div>
+                  </div>
+                  <div class="assignment-action">
+                    <form
+                      class="upload-form"
+                      onsubmit="
+                        event.preventDefault();
+                        alert('Assignment Submitted Successfully!');
+                        this.closest('.assignment-card').style.display = 'none';
+                      "
+                    >
+                      <input type="file" required />
+                      <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Submit
+                      </button>
+                    </form>
+                  </div>
+                </div>
+
+                <div
+                  class="assignment-card animate-entrance"
+                  style="animation-delay: 0.1s"
+                >
+                  <div class="assignment-meta">
+                    <span class="badge warning">Due in 5 Days</span>
+                    <h4>Multivariable Calculus Worksheet 4</h4>
+                    <p>Subject: MA-102 | Professor: Prof. Anita Desai</p>
+                    <div class="prof-attachment">
+                      <p class="text-sm text-muted mb-2">
+                        <i class="fa-solid fa-folder-open"></i> Reference
+                        Material:
+                      </p>
+                      <a href="#" class="attachment-link file-link"
+                        ><i class="fa-solid fa-file-pdf"></i>
+                        Problem_Set_04.pdf</a
+                      >
+                    </div>
+                  </div>
+                  <div class="assignment-action">
+                    <form
+                      class="upload-form"
+                      onsubmit="
+                        event.preventDefault();
+                        alert('Assignment Submitted Successfully!');
+                        this.closest('.assignment-card').style.display = 'none';
+                      "
+                    >
+                      <input type="file" required />
+                      <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Submit
+                      </button>
+                    </form>
+                  </div>
+                </div>
+
+                <div
+                  class="assignment-card animate-entrance"
+                  style="animation-delay: 0.2s"
+                >
+                  <div class="assignment-meta">
+                    <span class="badge danger">Due Tomorrow</span>
+                    <h4>Software Engineering: SRS Document Creation</h4>
+                    <p>Subject: CS-205 | Professor: Dr. K. Reddy</p>
+                    <div class="prof-attachment">
+                      <p class="text-sm text-muted mb-2">
+                        <i class="fa-solid fa-folder-open"></i> Reference
+                        Material:
+                      </p>
+                      <a href="#" class="attachment-link file-link"
+                        ><i class="fa-solid fa-file-word"></i>
+                        IEEE_SRS_Template.docx</a
+                      >
+                    </div>
+                  </div>
+                  <div class="assignment-action">
+                    <form
+                      class="upload-form"
+                      onsubmit="
+                        event.preventDefault();
+                        alert('Assignment Submitted Successfully!');
+                        this.closest('.assignment-card').style.display = 'none';
+                      "
+                    >
+                      <input type="file" required />
+                      <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Submit
+                      </button>
+                    </form>
+                  </div>
+                </div>
+
+                <div
+                  class="assignment-card animate-entrance"
+                  style="animation-delay: 0.3s"
+                >
+                  <div class="assignment-meta">
+                    <span class="badge warning">Due in 4 Days</span>
+                    <h4>Database Management: SQL Queries & Normalization</h4>
+                    <p>Subject: CS-201 | Professor: Dr. S. Verma</p>
+                    <div class="prof-attachment">
+                      <p class="text-sm text-muted mb-2">
+                        <i class="fa-solid fa-folder-open"></i> Reference
+                        Material:
+                      </p>
+                      <a href="#" class="attachment-link file-link"
+                        ><i class="fa-solid fa-file-code"></i>
+                        Company_Database_Schema.sql</a
+                      >
+                    </div>
+                  </div>
+                  <div class="assignment-action">
+                    <form
+                      class="upload-form"
+                      onsubmit="
+                        event.preventDefault();
+                        alert('Assignment Submitted Successfully!');
+                        this.closest('.assignment-card').style.display = 'none';
+                      "
+                    >
+                      <input type="file" required />
+                      <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Submit
+                      </button>
+                    </form>
+                  </div>
+                </div>
+
+                <div
+                  class="assignment-card animate-entrance"
+                  style="animation-delay: 0.4s"
+                >
+                  <div class="assignment-meta">
+                    <span class="badge success">Due in 8 Days</span>
+                    <h4>Computer Networks: Packet Sniffing Analysis</h4>
+                    <p>Subject: CS-204 | Professor: Mr. T. Kumar</p>
+                    <div class="prof-attachment">
+                      <p class="text-sm text-muted mb-2">
+                        <i class="fa-solid fa-folder-open"></i> Reference
+                        Material:
+                      </p>
+                      <a href="#" class="attachment-link file-link"
+                        ><i class="fa-solid fa-file-pdf"></i>
+                        Wireshark_Lab_Setup_Guide.pdf</a
+                      >
+                    </div>
+                  </div>
+                  <div class="assignment-action">
+                    <form
+                      class="upload-form"
+                      onsubmit="
+                        event.preventDefault();
+                        alert('Assignment Submitted Successfully!');
+                        this.closest('.assignment-card').style.display = 'none';
+                      "
+                    >
+                      <input type="file" required />
+                      <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Submit
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div id="completed-assignments" class="assignment-view hide">
+                <div class="assignment-card">
+                  <div class="assignment-meta">
+                    <span class="badge success">Graded: 9.5/10</span>
+                    <h4>Basic Electronics: KVL & KCL Lab Report</h4>
+                    <p>Subject: EC-104 | Professor: Dr. A. Gupta</p>
+                    <div class="prof-attachment">
+                      <p class="text-sm text-muted mb-2">
+                        <i class="fa-solid fa-folder-open"></i> Lab Manual:
+                      </p>
+                      <a href="#" class="attachment-link file-link"
+                        ><i class="fa-solid fa-file-pdf"></i>
+                        Lab_Manual_03.pdf</a
+                      >
+                    </div>
+                  </div>
+                  <div class="assignment-action completed-action">
+                    <p class="text-sm text-muted mb-2">Your Submission:</p>
+                    <a href="#" class="attachment-link web-link"
+                      ><i class="fa-solid fa-check-circle"></i>
+                      Mercer_KVL_Lab.pdf</a
+                    >
+                  </div>
+                </div>
+
+                <div class="assignment-card">
+                  <div class="assignment-meta">
+                    <span class="badge success">Graded: 8.5/10</span>
+                    <h4>Engineering Physics: Quantum Wave Functions</h4>
+                    <p>Subject: PH-101 | Professor: Dr. M. Singh</p>
+                    <div class="prof-attachment">
+                      <p class="text-sm text-muted mb-2">
+                        <i class="fa-solid fa-folder-open"></i> Assignment
+                        Brief:
+                      </p>
+                      <a href="#" class="attachment-link file-link"
+                        ><i class="fa-solid fa-file-pdf"></i>
+                        Wave_Equation_Problems.pdf</a
+                      >
+                    </div>
+                  </div>
+                  <div class="assignment-action completed-action">
+                    <p class="text-sm text-muted mb-2">Your Submission:</p>
+                    <a href="#" class="attachment-link web-link"
+                      ><i class="fa-solid fa-check-circle"></i>
+                      Mercer_Physics_Assign1.pdf</a
+                    >
+                  </div>
+                </div>
+
+                <div class="assignment-card">
+                  <div class="assignment-meta">
+                    <span class="badge success">Graded: A+</span>
+                    <h4>Technical Communication: Smart City Proposal</h4>
+                    <p>Subject: HU-102 | Professor: Ms. L. D'Souza</p>
+                    <div class="prof-attachment">
+                      <p class="text-sm text-muted mb-2">
+                        <i class="fa-solid fa-folder-open"></i> Formatting
+                        Guidelines:
+                      </p>
+                      <a href="#" class="attachment-link file-link"
+                        ><i class="fa-solid fa-file-pdf"></i>
+                        Tech_Proposal_Format.pdf</a
+                      >
+                    </div>
+                  </div>
+                  <div class="assignment-action completed-action">
+                    <p class="text-sm text-muted mb-2">Your Submission:</p>
+                    <a href="#" class="attachment-link web-link"
+                      ><i class="fa-solid fa-check-circle"></i>
+                      Mercer_SmartCity_Proposal.docx</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="notices" class="portal-section">
+            <div class="section-header-flex">
+              <h2>Campus Notice Board</h2>
+              <div class="notice-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="critical">
+                  Critical
+                </button>
+                <button class="filter-btn" data-filter="event">Events</button>
+                <button class="filter-btn" data-filter="general">
+                  General
+                </button>
+              </div>
+            </div>
+
+            <div class="notice-container" id="dynamic-notice-container">
+              <div class="notice-item critical" data-category="critical">
+                <span class="notice-date">June 26, 2026</span>
+                <h4>End Semester Examination Schedule Released</h4>
+                <p>
+                  The final timetable for all engineering branches has been
+                  updated in the portal layout registry. Exams commence July
+                  12th, 2026.
+                </p>
+                <button class="attachment-toggle-btn">
+                  <i class="fa-solid fa-paperclip"></i> View Attachments
+                  <i class="fa-solid fa-chevron-down chevron"></i>
+                </button>
+                <div class="attachment-dropdown">
+                  <a href="#" class="attachment-link file-link"
+                    ><i class="fa-solid fa-file-pdf"></i>
+                    B.Tech_Exam_Schedule_Sem2_2026.pdf</a
+                  >
+                  <a href="#" class="attachment-link file-link"
+                    ><i class="fa-solid fa-file-pdf"></i>
+                    Standard_Examination_Guidelines.pdf</a
+                  >
+                </div>
+              </div>
+
+              <div class="notice-item event" data-category="event">
+                <span class="notice-date">June 24, 2026</span>
+                <h4>Annual Hackathon 'Hack-Verse 2026' Registrations Open</h4>
+                <p>
+                  Register your teams of 3-4 members for the upcoming 36-hour
+                  hackathon hosted by the Open Source Software Development club.
+                </p>
+                <button class="attachment-toggle-btn">
+                  <i class="fa-solid fa-link"></i> View Registration Links
+                  <i class="fa-solid fa-chevron-down chevron"></i>
+                </button>
+                <div class="attachment-dropdown">
+                  <a href="#" class="attachment-link web-link"
+                    ><i class="fa-solid fa-globe"></i> Official Hack-Verse
+                    Website</a
+                  >
+                  <a href="#" class="attachment-link web-link"
+                    ><i class="fa-solid fa-arrow-up-right-from-square"></i> Team
+                    Registration Form</a
+                  >
+                  <a href="#" class="attachment-link file-link"
+                    ><i class="fa-solid fa-file-word"></i>
+                    Hackathon_Rulebook.docx</a
+                  >
+                </div>
+              </div>
+
+              <div class="notice-item general" data-category="general">
+                <span class="notice-date">June 20, 2026</span>
+                <h4>Campus Main Library Extended Timings</h4>
+                <p>
+                  In view of the examinations, the main campus library will
+                  remain operational 24/7 starting next Monday.
+                </p>
+                <button class="attachment-toggle-btn">
+                  <i class="fa-solid fa-clock"></i> View Timing Chart
+                  <i class="fa-solid fa-chevron-down chevron"></i>
+                </button>
+                <div class="attachment-dropdown">
+                  <a href="#" class="attachment-link file-link"
+                    ><i class="fa-solid fa-file-image"></i>
+                    Extended_Library_Hours_Chart.png</a
+                  >
+                </div>
+              </div>
+
+              <div class="notice-item critical" data-category="critical">
+                <span class="notice-date">June 28, 2026</span>
+                <h4>Deadline for Odd Semester Fee Payment</h4>
+                <p>
+                  All students must clear their pending tuition and hostel dues
+                  for the upcoming odd semester by July 5th, 2026, to avoid late
+                  fines and registration holds.
+                </p>
+                <button class="attachment-toggle-btn">
+                  <i class="fa-solid fa-file-invoice-dollar"></i> View Payment
+                  Details <i class="fa-solid fa-chevron-down chevron"></i>
+                </button>
+                <div class="attachment-dropdown">
+                  <a href="#" class="attachment-link web-link"
+                    ><i class="fa-solid fa-credit-card"></i> Online Fee Payment
+                    Portal</a
+                  >
+                  <a href="#" class="attachment-link file-link"
+                    ><i class="fa-solid fa-file-pdf"></i>
+                    Fee_Structure_2026-27.pdf</a
+                  >
+                </div>
+              </div>
+
+              <div class="notice-item event" data-category="event">
+                <span class="notice-date">July 01, 2026</span>
+                <h4>Inter-College Cultural Fest: Zephyr 2026</h4>
+                <p>
+                  Get ready for the biggest cultural extravaganza! Auditions for
+                  dance, music, and drama clubs are starting next week in the
+                  main campus auditorium.
+                </p>
+                <button class="attachment-toggle-btn">
+                  <i class="fa-solid fa-masks-theater"></i> View Event Details
+                  <i class="fa-solid fa-chevron-down chevron"></i>
+                </button>
+                <div class="attachment-dropdown">
+                  <a href="#" class="attachment-link web-link"
+                    ><i class="fa-solid fa-globe"></i> Zephyr 2026 Official
+                    Site</a
+                  >
+                  <a href="#" class="attachment-link web-link"
+                    ><i class="fa-solid fa-clipboard-list"></i> Club Audition
+                    Registration Form</a
+                  >
+                  <a href="#" class="attachment-link file-link"
+                    ><i class="fa-solid fa-file-image"></i>
+                    Event_Schedule_Poster.png</a
+                  >
+                </div>
+              </div>
+
+              <div class="notice-item general" data-category="general">
+                <span class="notice-date">July 03, 2026</span>
+                <h4>Scheduled Campus Wi-Fi Maintenance</h4>
+                <p>
+                  The IT department will be upgrading the campus network
+                  infrastructure. Expect intermittent internet outages across
+                  all hostel blocks this coming weekend.
+                </p>
+                <button class="attachment-toggle-btn">
+                  <i class="fa-solid fa-wifi"></i> View Outage Schedule
+                  <i class="fa-solid fa-chevron-down chevron"></i>
+                </button>
+                <div class="attachment-dropdown">
+                  <a href="#" class="attachment-link file-link"
+                    ><i class="fa-solid fa-file-pdf"></i>
+                    Maintenance_Timetable_By_Block.pdf</a
+                  >
+                  <a href="#" class="attachment-link web-link"
+                    ><i class="fa-solid fa-headset"></i> IT Helpdesk Support
+                    Portal</a
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="departments" class="portal-section">
+            <div class="section-header-flex">
+              <h2>Department Portals & Directory</h2>
+            </div>
+            <p style="margin-bottom: 1.5rem; color: var(--text-muted)">
+              Select a department to view its directory, location, and latest
+              circulars.
+            </p>
+
+            <!-- Department Tab Navigation -->
+            <div class="dept-tabs">
+              <button class="dept-tab-btn active" data-dept="cse">
+                Computer Science
+              </button>
+              <button class="dept-tab-btn" data-dept="eee">
+                Electrical & Electronics
+              </button>
+              <button class="dept-tab-btn" data-dept="ece">
+                Electronics & Comm.
+              </button>
+              <button class="dept-tab-btn" data-dept="mech">Mechanical</button>
+              <button class="dept-tab-btn" data-dept="civil">Civil</button>
+            </div>
+
+            <!-- =============================== -->
+            <!-- 1. CSE Department View          -->
+            <!-- =============================== -->
+            <div
+              id="cse-dept"
+              class="dept-content active-dept animate-entrance"
+            >
+              <div class="dept-grid">
+                <!-- Info & Faculty Card -->
+                <div class="dept-info-card">
+                  <h3>
+                    <i class="fa-solid fa-location-dot"></i> Department Info
+                  </h3>
+                  <p><strong>Location:</strong> Block A, 2nd Floor</p>
+                  <p><strong>Email:</strong> admin@cse.university.edu</p>
+                  <p><strong>Phone:</strong> +91 800-123-4567</p>
+
+                  <h4 class="mt-3">
+                    <i class="fa-solid fa-user-tie"></i> Head of Department
+                  </h4>
+                  <div class="faculty-profile">
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                    <div>
+                      <strong>Dr. S. K. Verma</strong>
+                      <span>Ph.D in AI/ML | hod.cse@university.edu</span>
+                    </div>
+                  </div>
+
+                  <h4 class="mt-3">
+                    <i class="fa-solid fa-users"></i> Key Faculty
+                  </h4>
+                  <ul class="faculty-list">
+                    <li>
+                      <strong>Prof. S. Sen</strong> - C Programming & Logic
+                      Building
+                    </li>
+                    <li>
+                      <strong>Dr. R. Sharma</strong> - Data Structures &
+                      Algorithms
+                    </li>
+                    <li>
+                      <strong>Prof. A. Nair</strong> - Web Development
+                      (HTML/CSS)
+                    </li>
+                    <li>
+                      <strong>Dr. K. Reddy</strong> - Software Engineering
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- News Card -->
+                <div class="dept-news-card">
+                  <h3>
+                    <i class="fa-solid fa-bullhorn"></i> Department Circulars
+                  </h3>
+                  <ul class="dept-news-list">
+                    <li>
+                      <i class="fa-solid fa-newspaper"></i> New NVIDIA AI
+                      workstation cluster installed in Research Lab-4.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-calendar-day"></i> Guest Lecture
+                      tomorrow on Quantum Computing by Dr. Amit Vyas.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-trophy"></i> Coding Club:
+                      Semester-end competitive programming contest scheduled for
+                      July 10th.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- =============================== -->
+            <!-- 2. EEE Department View          -->
+            <!-- =============================== -->
+            <div id="eee-dept" class="dept-content hide">
+              <div class="dept-grid">
+                <div class="dept-info-card">
+                  <h3>
+                    <i class="fa-solid fa-location-dot"></i> Department Info
+                  </h3>
+                  <p><strong>Location:</strong> Block B, Ground Floor</p>
+                  <p><strong>Email:</strong> admin@eee.university.edu</p>
+                  <p><strong>Phone:</strong> +91 800-123-4568</p>
+
+                  <h4 class="mt-3">
+                    <i class="fa-solid fa-user-tie"></i> Head of Department
+                  </h4>
+                  <div class="faculty-profile">
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                    <div>
+                      <strong>Dr. M. Prakash</strong>
+                      <span
+                        >Ph.D in Power Systems | hod.eee@university.edu</span
+                      >
+                    </div>
+                  </div>
+
+                  <h4 class="mt-3">
+                    <i class="fa-solid fa-users"></i> Key Faculty
+                  </h4>
+                  <ul class="faculty-list">
+                    <li>
+                      <strong>Dr. A. Gupta</strong> - Circuit Analysis & Network
+                      Theorems
+                    </li>
+                    <li>
+                      <strong>Prof. V. Desai</strong> - Power Electronics &
+                      Voltage Regulators
+                    </li>
+                    <li><strong>Dr. L. Singh</strong> - Electromagnetics</li>
+                  </ul>
+                </div>
+
+                <div class="dept-news-card">
+                  <h3>
+                    <i class="fa-solid fa-bullhorn"></i> Department Circulars
+                  </h3>
+                  <ul class="dept-news-list">
+                    <li>
+                      <i class="fa-solid fa-flask"></i> High-voltage lab
+                      maintenance scheduled for Thursday.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-newspaper"></i> IEEE Student Branch
+                      recruitment drive opens next week.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- =============================== -->
+            <!-- 3. ECE Department View          -->
+            <!-- =============================== -->
+            <div id="ece-dept" class="dept-content hide">
+              <div class="dept-grid">
+                <div class="dept-info-card">
+                  <h3>
+                    <i class="fa-solid fa-location-dot"></i> Department Info
+                  </h3>
+                  <p><strong>Location:</strong> Block B, 1st Floor</p>
+                  <p><strong>Email:</strong> admin@ece.university.edu</p>
+                  <p><strong>Phone:</strong> +91 800-123-4569</p>
+
+                  <h4 class="mt-3">
+                    <i class="fa-solid fa-user-tie"></i> Head of Department
+                  </h4>
+                  <div class="faculty-profile">
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                    <div>
+                      <strong>Dr. T. Krishnan</strong>
+                      <span>Ph.D in VLSI Design | hod.ece@university.edu</span>
+                    </div>
+                  </div>
+
+                  <h4 class="mt-3">
+                    <i class="fa-solid fa-users"></i> Key Faculty
+                  </h4>
+                  <ul class="faculty-list">
+                    <li>
+                      <strong>Prof. R. Menon</strong> - Digital Logic Design
+                    </li>
+                    <li>
+                      <strong>Dr. S. Patel</strong> - Microprocessors &
+                      Microcontrollers
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="dept-news-card">
+                  <h3>
+                    <i class="fa-solid fa-bullhorn"></i> Department Circulars
+                  </h3>
+                  <ul class="dept-news-list">
+                    <li>
+                      <i class="fa-solid fa-newspaper"></i> Embedded Systems lab
+                      project review deadlines extended to Friday.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-circle-info"></i> Semiconductor
+                      fabrication workshop kits distributed at Room 201.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- =============================== -->
+            <!-- 4. Mechanical Department View   -->
+            <!-- =============================== -->
+            <div id="mech-dept" class="dept-content hide">
+              <div class="dept-grid">
+                <div class="dept-info-card">
+                  <h3>
+                    <i class="fa-solid fa-location-dot"></i> Department Info
+                  </h3>
+                  <p><strong>Location:</strong> Block C, Workshop Wing</p>
+                  <p><strong>Email:</strong> admin@mech.university.edu</p>
+                  <p><strong>Phone:</strong> +91 800-123-4570</p>
+
+                  <h4 class="mt-3">
+                    <i class="fa-solid fa-user-tie"></i> Head of Department
+                  </h4>
+                  <div class="faculty-profile">
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                    <div>
+                      <strong>Dr. H. B. Sharma</strong>
+                      <span
+                        >Ph.D in Thermal Eng. | hod.mech@university.edu</span
+                      >
+                    </div>
+                  </div>
+
+                  <h4 class="mt-3">
+                    <i class="fa-solid fa-users"></i> Key Faculty
+                  </h4>
+                  <ul class="faculty-list">
+                    <li><strong>Prof. J. Kumar</strong> - Fluid Mechanics</li>
+                    <li><strong>Dr. K. Das</strong> - Thermodynamics</li>
+                  </ul>
+                </div>
+
+                <div class="dept-news-card">
+                  <h3>
+                    <i class="fa-solid fa-bullhorn"></i> Department Circulars
+                  </h3>
+                  <ul class="dept-news-list">
+                    <li>
+                      <i class="fa-solid fa-newspaper"></i> CAD Design
+                      competition entries shortlisting completed. Check display
+                      board.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-screwdriver-wrench"></i> Annual
+                      Automotive Workshop begins training on EV powertrains.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- =============================== -->
+            <!-- 5. Civil Department View        -->
+            <!-- =============================== -->
+            <div id="civil-dept" class="dept-content hide">
+              <div class="dept-grid">
+                <div class="dept-info-card">
+                  <h3>
+                    <i class="fa-solid fa-location-dot"></i> Department Info
+                  </h3>
+                  <p><strong>Location:</strong> Block C, Ground Floor</p>
+                  <p><strong>Email:</strong> admin@civil.university.edu</p>
+                  <p><strong>Phone:</strong> +91 800-123-4571</p>
+
+                  <h4 class="mt-3">
+                    <i class="fa-solid fa-user-tie"></i> Head of Department
+                  </h4>
+                  <div class="faculty-profile">
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                    <div>
+                      <strong>Dr. P. R. Joshi</strong>
+                      <span
+                        >Ph.D in Structural Eng. |
+                        hod.civil@university.edu</span
+                      >
+                    </div>
+                  </div>
+
+                  <h4 class="mt-3">
+                    <i class="fa-solid fa-users"></i> Key Faculty
+                  </h4>
+                  <ul class="faculty-list">
+                    <li><strong>Prof. N. Agarwal</strong> - Surveying</li>
+                    <li><strong>Dr. M. Ali</strong> - Concrete Technology</li>
+                  </ul>
+                </div>
+
+                <div class="dept-news-card">
+                  <h3>
+                    <i class="fa-solid fa-bullhorn"></i> Department Circulars
+                  </h3>
+                  <ul class="dept-news-list">
+                    <li>
+                      <i class="fa-solid fa-helmet-safety"></i> Mandatory site
+                      visit for 3rd-year students scheduled for Saturday.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-drafting-compass"></i> AutoCAD
+                      submissions due next week.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="campus-map" class="portal-section">
+            <h2>Campus Navigation Map</h2>
+            <p>
+              Use the map below to navigate to core academic complexes, blocks,
+              and amenities.
+            </p>
+            <!-- Map container with forced white background -->
+            <div
+              class="map-container"
+              style="
+                background-color: #ffffff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 1.5rem;
+                border-radius: 8px;
+              "
+            >
+              <img
+                src="Campus Map - Parul University-1.jpg"
+                alt="Parul University Campus Map"
+                style="
+                  max-width: 300%;
+                  height: auto;
+                  border-radius: 8px;
+                  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+                "
+              />
+            </div>
+          </section>
+
+          <section id="doubts" class="portal-section">
+            <div class="section-header-flex">
+              <h2>Peer & Faculty Doubt Resolution Forum</h2>
+            </div>
+
+            <!-- Enhanced & Enlarged Post Doubt Box -->
+            <!-- Enhanced & Enlarged Post Doubt Box -->
+            <div class="post-doubt-box enhanced-form">
+              <h3>
+                <i class="fa-solid fa-circle-question"></i> Ask a New Doubt
+              </h3>
+
+              <!-- NEW INSTRUCTION ADDED HERE -->
+              <p
+                style="
+                  font-size: 0.9rem;
+                  color: var(--text-muted);
+                  margin-bottom: 1.25rem;
+                  border-left: 3px solid var(--accent-blue);
+                  padding-left: 0.75rem;
+                  background: rgba(37, 99, 235, 0.05);
+                  padding-top: 0.5rem;
+                  padding-bottom: 0.5rem;
+                  border-radius: 0 4px 4px 0;
+                "
+              >
+                <strong
+                  ><i class="fa-solid fa-circle-info"></i> Instruction:</strong
+                >
+                Please write your doubt according to the specific subject and
+                ensure you tag or include the respective professor's college
+                email ID in your description.
+              </p>
+
+              <form id="doubt-form">
+                <input
+                  type="text"
+                  id="doubt-subject"
+                  placeholder="Subject Title (e.g., Memory layout in recursion or Thevenin's theorem query)"
+                  required
+                />
+                <textarea
+                  id="doubt-text"
+                  rows="5"
+                  placeholder="Explain your query in detail. Include what you have tried so far and the professor's email ID..."
+                  required
+                ></textarea>
+
+                <!-- File Upload Feature -->
+                <div class="file-upload-wrapper">
+                  <label for="doubt-file" class="text-muted"
+                    ><i class="fa-solid fa-paperclip"></i> Attach File/Image
+                    (Optional):</label
+                  >
+                  <input
+                    type="file"
+                    id="doubt-file"
+                    class="file-upload-input"
+                    accept="image/*,.pdf,.c,.cpp,.html,.css"
+                  />
+                </div>
+
+                <button type="submit" class="btn-primary-sm btn-large">
+                  <i class="fa-solid fa-paper-plane"></i> Post Doubt
+                </button>
+              </form>
+            </div>
+
+            <div class="resolved-doubts-list">
+              <h3>Active & Resolved Forum Threads</h3>
+              <div id="forum-threads">
+                <!-- Existing Doubt -->
+                <div class="forum-post">
+                  <h4>
+                    <strong
+                      >Q: Difference between Struct and Union in C?</strong
+                    >
+                  </h4>
+                  <p class="posted-by">Posted by: Rohan Roy | 3 hours ago</p>
+                  <p style="font-size: 0.95rem; margin-bottom: 0.5rem">
+                    I am confused about how memory is allocated for unions
+                    compared to structs when dealing with different data types.
+                  </p>
+                  <p class="reply-box">
+                    <strong
+                      ><i
+                        class="fa-solid fa-check-circle"
+                        style="color: var(--success)"
+                      ></i>
+                      Faculty Answer (Prof. S. Sen):</strong
+                    >
+                    Struct allocates distinct memory locations for all members,
+                    whereas Union shares a single common memory space size equal
+                    to its largest member.
+                  </p>
+                </div>
+
+                <!-- New Solved Doubt 1 -->
+                <div class="forum-post">
+                  <h4>
+                    <strong
+                      >Q: Applying Euler's Theorem to find partial
+                      derivatives?</strong
+                    >
+                  </h4>
+                  <p class="posted-by">Posted by: Priya Sharma | 1 day ago</p>
+                  <p style="font-size: 0.95rem; margin-bottom: 0.5rem">
+                    I'm stuck on Worksheet 3. How do we verify Euler's theorem
+                    for a homogeneous function of degree 2 involving three
+                    variables (x, y, z)?
+                  </p>
+                  <a
+                    href="#"
+                    class="attachment-link file-link"
+                    style="margin-bottom: 1rem; display: inline-flex"
+                    ><i class="fa-solid fa-file-image"></i> my_attempt.png</a
+                  >
+                  <p class="reply-box">
+                    <strong
+                      ><i
+                        class="fa-solid fa-check-circle"
+                        style="color: var(--success)"
+                      ></i>
+                      Faculty Answer (Prof. Anita Desai):</strong
+                    >
+                    First, check if f(tx, ty, tz) = t² * f(x, y, z). Once
+                    confirmed it's homogeneous of degree n=2, simply apply
+                    x(∂f/∂x) + y(∂f/∂y) + z(∂f/∂z) = 2f. I have attached the
+                    step-by-step derivation for your specific image below.
+                  </p>
+                </div>
+
+                <!-- New Solved Doubt 2 -->
+                <div class="forum-post">
+                  <h4>
+                    <strong
+                      >Q: Pure HTML/CSS responsive grids without
+                      JavaScript?</strong
+                    >
+                  </h4>
+                  <p class="posted-by">Posted by: Kabir Singh | 2 days ago</p>
+                  <p style="font-size: 0.95rem; margin-bottom: 0.5rem">
+                    Is it possible to make a multi-page portfolio fully
+                    responsive using only semantic HTML and CSS? I want to avoid
+                    JS for layout shifts.
+                  </p>
+                  <p class="reply-box">
+                    <strong
+                      ><i
+                        class="fa-solid fa-users"
+                        style="color: var(--accent-blue)"
+                      ></i>
+                      Peer Answer (Alex M.):</strong
+                    >
+                    Absolutely! Use CSS Grid with `grid-template-columns:
+                    repeat(auto-fit, minmax(250px, 1fr));`. It automatically
+                    handles the wrapping for mobile screens without a single
+                    line of JavaScript. Also, look into CSS media queries
+                    (`@media`) for fine-tuning margins!
+                  </p>
+                </div>
+
+                <!-- New Solved Doubt 3 -->
+                <div class="forum-post">
+                  <h4>
+                    <strong
+                      >Q: Norton's vs Thevenin's Theorem for complex
+                      circuits?</strong
+                    >
+                  </h4>
+                  <p class="posted-by">Posted by: Neha Verma | 4 days ago</p>
+                  <p style="font-size: 0.95rem; margin-bottom: 0.5rem">
+                    When analyzing a circuit with multiple voltage and current
+                    sources, is it better to convert everything to a Thevenin
+                    equivalent or a Norton equivalent?
+                  </p>
+                  <p class="reply-box">
+                    <strong
+                      ><i
+                        class="fa-solid fa-check-circle"
+                        style="color: var(--success)"
+                      ></i>
+                      Faculty Answer (Dr. A. Gupta):</strong
+                    >
+                    They are mathematically interchangeable via source
+                    transformation (V_th = I_n * R_th). However, if your load is
+                    in parallel with the rest of the circuit, Norton's (current
+                    source) often makes the final nodal analysis easier.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="grievance" class="portal-section">
+            <h2>Student Grievance Redressal Cell</h2>
+            <p>
+              Submit issues directly regarding hostel facilities, academic
+              disputes, transport, or administrative friction anonymized or
+              verified.
+            </p>
+            <div class="grievance-form-wrapper">
+              <form id="grievance-form">
+                <div class="input-group">
+                  <label>Grievance Category</label>
+                  <select id="grievance-cat">
+                    <option>Academic Infrastructure</option>
+                    <option>Hostel / Mess Food Quality</option>
+                    <option>Transport & Parking</option>
+                    <option>Anti-Ragging / Security Concern</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <label>Detailed Description</label>
+                  <textarea
+                    id="grievance-desc"
+                    rows="4"
+                    placeholder="Describe the problem transparently..."
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn-danger-ui">
+                  File Official Complaint
+                </button>
+              </form>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <div id="student-info-modal" class="custom-modal-overlay hidden">
+      <div class="custom-modal-box">
+        <div class="modal-header">
+          <h3 id="modal-title-text">Administrative Records</h3>
+          <button id="close-modal-btn" class="close-modal-x" aria-label="Close panel">&times;</button>
+        </div>
+        <div class="modal-body-content" id="modal-dynamic-body">
+          </div>
+      </div>
+    </div>
+    <script src="script1.js"></script>
+  </body>
+</html>
