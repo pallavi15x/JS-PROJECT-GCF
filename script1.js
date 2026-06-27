@@ -10,6 +10,7 @@ const currentViewTitle = document.getElementById("current-view-title");
 
 // PERSISTENCE CHECK ON PAGE LOAD
 // This immediately runs when the page refreshes to see if a session exists
+/*
 const savedEmail = localStorage.getItem("userEmail");
 if (savedEmail) {
   loginContainer.classList.add("hidden");
@@ -18,6 +19,7 @@ if (savedEmail) {
     .split("@")[0]
     .toUpperCase();
 }
+*/
 
 // 8. LOGIN SUBMISSION SIMULATION
 loginForm.addEventListener("submit", (e) => {
